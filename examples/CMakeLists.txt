@@ -1,10 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+# Add matrix multiplication example
+add_executable(matrix_mult matrix_mult.cpp)
 
-# Add the matrix multiplication example
-add_executable(matrix_mult matrix_multiplication.cpp)
-
-# Set C++ standard
-set_target_properties(matrix_mult PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED ON
-)
+add_executable(isa_converter ../src/isa_converter.cpp)

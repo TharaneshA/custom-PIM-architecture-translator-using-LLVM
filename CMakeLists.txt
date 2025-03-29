@@ -1,42 +1,37 @@
 cmake_minimum_required(VERSION 3.10)
-project(pim_translator)
+project(CompilerDA3)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Find LLVM package
+# Find LLVM
 find_package(LLVM REQUIRED CONFIG)
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
 message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
 
-# Set LLVM include paths
-list(APPEND CMAKE_MODULE_PATH "${LLVM_DIR}")
-include_directories(
-    ${LLVM_INCLUDE_DIRS}
-    ${LLVM_MAIN_INCLUDE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
-
-# Add LLVM specific definitions and includes
-include_directories(
-    ${LLVM_INCLUDE_DIRS}
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
+# Include LLVM headers
+include_directories(${LLVM_INCLUDE_DIRS})
 add_definitions(${LLVM_DEFINITIONS})
 
-# Link against required LLVM components
-llvm_map_components_to_libnames(llvm_libs
-    support
-    core
-    irreader
-    bitreader
-    bitwriter
-    analysis
-    transformsutils
-    passes
+# Add include directory
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# Add source files
+set(SOURCES
+    src/main.cpp
+    src/parser.cpp
+    src/loop_analyzer.cpp
+    src/memory_mapper.cpp
+    src/instruction_generator.cpp
 )
 
-# Add subdirectories
-add_subdirectory(src)
+# Create executable
+add_executable(pim_compiler ${SOURCES})
+
+# Link against LLVM libraries
+llvm_map_components_to_libnames(llvm_libs support core irreader analysis)
+target_link_libraries(pim_compiler ${llvm_libs})
+
+# Add example directory
 add_subdirectory(examples)

@@ -1,0 +1,10 @@
+/mnt/c/project/custom-PIM-architecture-translator-using-LLVM/build/CMakeFiles/intrinsics_gen.dir
+/mnt/c/project/custom-PIM-architecture-translator-using-LLVM/build/CMakeFiles/omp_gen.dir
+/mnt/c/project/custom-PIM-architecture-translator-using-LLVM/build/CMakeFiles/acc_gen.dir
+/mnt/c/project/custom-PIM-architecture-translator-using-LLVM/build/CMakeFiles/pim_compiler.dir
+/mnt/c/project/custom-PIM-architecture-translator-using-LLVM/build/CMakeFiles/edit_cache.dir
+/mnt/c/project/custom-PIM-architecture-translator-using-LLVM/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/project/custom-PIM-architecture-translator-using-LLVM/build/examples/CMakeFiles/matrix_mult.dir
+/mnt/c/project/custom-PIM-architecture-translator-using-LLVM/build/examples/CMakeFiles/isa_converter.dir
+/mnt/c/project/custom-PIM-architecture-translator-using-LLVM/build/examples/CMakeFiles/edit_cache.dir
+/mnt/c/project/custom-PIM-architecture-translator-using-LLVM/build/examples/CMakeFiles/rebuild_cache.dir

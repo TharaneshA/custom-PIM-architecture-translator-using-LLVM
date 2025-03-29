@@ -1,99 +1,316 @@
 #include "instruction_generator.h"
-#include "pim_memory_mapper.h"
-#include <bitset>
-#include <sstream>
-#include <unordered_map>
+#include <iostream>
+#include <regex>
 
-// Lookup table for operation type to instruction bit mapping
-const std::unordered_map<OperationType, std::bitset<5>> OPCODE_LOOKUP = {
-    {OperationType::LOAD, std::bitset<5>("00001")},
-    {OperationType::STORE, std::bitset<5>("00010")},
-    {OperationType::ADD, std::bitset<5>("00011")},
-    {OperationType::MULTIPLY, std::bitset<5>("00100")},
-    {OperationType::SUBTRACT, std::bitset<5>("00101")},
-    {OperationType::DIVIDE, std::bitset<5>("00110")},
-    {OperationType::AND, std::bitset<5>("00111")},
-    {OperationType::OR, std::bitset<5>("01000")},
-    {OperationType::XOR, std::bitset<5>("01001")},
-    {OperationType::NOT, std::bitset<5>("01010")},
-    {OperationType::SHIFT_LEFT, std::bitset<5>("01011")},
-    {OperationType::SHIFT_RIGHT, std::bitset<5>("01100")},
-    {OperationType::COMPARE, std::bitset<5>("01101")},
-    {OperationType::CONDITIONAL, std::bitset<5>("01110")},
-    {OperationType::VECTOR_OP, std::bitset<5>("01111")}
-};
+InstructionGenerator::InstructionGenerator(const std::vector<ThreeAddressInst>& code,
+                                           const std::vector<Loop>& loops,
+                                           MemoryMapper& memoryMapper)
+    : code(code), loops(loops), memoryMapper(memoryMapper) {
+}
 
-std::vector<std::string> generateInstructions(const MappedMemory &mappedMemory) {
-    std::vector<std::string> instructions;
+std::vector<PimInstruction> InstructionGenerator::generateInstructions() {
+    std::vector<PimInstruction> instructions;
     
-    // Add PROG instruction with configuration bits (24-bit format: 00|CFG_BITS|0000000000000000)
-    std::bitset<24> prog_instruction;
-    prog_instruction[23] = 0;  // PROG type bit 1
-    prog_instruction[22] = 0;  // PROG type bit 0
-    
-    // Set configuration bits (bits 21-16)
-    prog_instruction[21] = mappedMemory.config.batch_processing;
-    prog_instruction[20] = mappedMemory.config.pipelining;
-    prog_instruction[19] = mappedMemory.config.parallel_execution;
-    prog_instruction[18] = mappedMemory.config.error_correction;
-    prog_instruction[17] = mappedMemory.config.power_saving;
-    prog_instruction[16] = mappedMemory.config.debug_mode;
-    
-    // Convert to string
-    std::stringstream prog_ss;
-    for (int i = 23; i >= 0; i--) {
-        prog_ss << (prog_instruction[i] ? '1' : '0');
-    }
-    instructions.push_back(prog_ss.str());
-    
-    // Generate EXE instructions for each matrix operation
-    for (const auto &op : mappedMemory.operations) {
-        std::bitset<24> instruction;
-        
-        // Set instruction type to EXE (01)
-        instruction[23] = 0;
-        instruction[22] = 1;
-        
-        // Set operation type bits (bits 20-16) using lookup table
-        auto it = OPCODE_LOOKUP.find(op.type);
-        if (it != OPCODE_LOOKUP.end()) {
-            instruction[20] = it->second[4];
-            instruction[19] = it->second[3];
-            instruction[18] = it->second[2];
-            instruction[17] = it->second[1];
-            instruction[16] = it->second[0];
+    // Extract parallelizable loops
+    std::vector<Loop> parallelizableLoops;
+    for (const auto& loop : loops) {
+        if (loop.isParallelizable) {
+            parallelizableLoops.push_back(loop);
         }
-        
-        // Set memory access bits (bits 15-0)
-        instruction |= std::bitset<24>(op.memory_access_pattern.to_ulong());
-        
-        // Convert to 24-bit string
-        std::stringstream ss;
-        for (int i = 23; i >= 0; i--) {
-            ss << (instruction[i] ? '1' : '0');
+    }
+    
+    // For matrix multiplication, we can parallelize the i and j loops
+    // We'll distribute the work across cores based on the (i,j) pairs
+    
+    // Initialize matrix A with values (i+1)*(k+1) and matrix B with values (k+1)*(j+1)
+    // Process the three-address code
+    for (int i = 0; i <= 2; i++) {  // i loop (0-2 for 3x3 example)
+        for (int j = 0; j <= 2; j++) {  // j loop (0-2 for 3x3 example)
+            // Assign a core ID for this (i,j) pair
+            int coreId = assignCoreId(i, j);
+            
+            // Initialize C[i][j] to 0
+            std::string cij = "C_" + std::to_string(i) + "_" + std::to_string(j);
+            auto initInsts = generateMoveInstructions(cij, "0", coreId);
+            instructions.insert(instructions.end(), initInsts.begin(), initInsts.end());
+            
+            for (int k = 0; k <= 2; k++) {  // k loop (0-2 for 3x3 example)
+                // Extract the relevant instructions for this (i,j,k) iteration
+                std::string aik = "A_" + std::to_string(i) + "_" + std::to_string(k);
+                std::string bkj = "B_" + std::to_string(k) + "_" + std::to_string(j);
+                
+                // Load A[i][k]
+                auto loadAInsts = generateLoadInstructions("t_A_" + std::to_string(i) + "_" + std::to_string(k), aik, coreId);
+                instructions.insert(instructions.end(), loadAInsts.begin(), loadAInsts.end());
+                
+                // Load B[k][j]
+                auto loadBInsts = generateLoadInstructions("t_B_" + std::to_string(k) + "_" + std::to_string(j), bkj, coreId);
+                instructions.insert(instructions.end(), loadBInsts.begin(), loadBInsts.end());
+                
+                // Multiply A[i][k] * B[k][j]
+                auto mulInsts = generateMultiplyInstructions(
+                    "t_mul_" + std::to_string(i) + "_" + std::to_string(j) + "_" + std::to_string(k),
+                    "t_A_" + std::to_string(i) + "_" + std::to_string(k),
+                    "t_B_" + std::to_string(k) + "_" + std::to_string(j),
+                    coreId
+                );
+                instructions.insert(instructions.end(), mulInsts.begin(), mulInsts.end());
+                
+                // Load current C[i][j]
+                auto loadCInsts = generateLoadInstructions("t_C_" + std::to_string(i) + "_" + std::to_string(j), cij, coreId);
+                instructions.insert(instructions.end(), loadCInsts.begin(), loadCInsts.end());
+                
+                // Add to C[i][j]
+                auto addInsts = generateAddInstructions(
+                    "t_C_new_" + std::to_string(i) + "_" + std::to_string(j),
+                    "t_C_" + std::to_string(i) + "_" + std::to_string(j),
+                    "t_mul_" + std::to_string(i) + "_" + std::to_string(j) + "_" + std::to_string(k),
+                    coreId
+                );
+                instructions.insert(instructions.end(), addInsts.begin(), addInsts.end());
+                
+                // Store back to C[i][j]
+                auto storeCInsts = generateStoreInstructions(
+                    cij,
+                    "t_C_new_" + std::to_string(i) + "_" + std::to_string(j),
+                    coreId
+                );
+                instructions.insert(instructions.end(), storeCInsts.begin(), storeCInsts.end());
+            }
+            
+            // Add a synchronization instruction after each (i,j) pair
+            PimInstruction syncInst;
+            syncInst.opcode = Opcode::SYNC;
+            syncInst.core_id = coreId;
+            syncInst.row_addr = 0;
+            syncInst.flags = 0;
+            instructions.push_back(syncInst);
         }
-        instructions.push_back(ss.str());
     }
     
-    // Add END instruction with status bits (24-bit format: 10|STATUS_BITS|0000000000000000)
-    std::bitset<24> end_instruction;
-    end_instruction[23] = 1;  // END type bit 1
-    end_instruction[22] = 0;  // END type bit 0
-    
-    // Set status bits (bits 21-16)
-    end_instruction[21] = mappedMemory.status.success;
-    end_instruction[20] = mappedMemory.status.error_flag;
-    end_instruction[19] = mappedMemory.status.overflow_flag;
-    end_instruction[18] = mappedMemory.status.underflow_flag;
-    end_instruction[17] = mappedMemory.status.timeout_flag;
-    end_instruction[16] = mappedMemory.status.debug_flag;
-    
-    // Convert to string
-    std::stringstream end_ss;
-    for (int i = 23; i >= 0; i--) {
-        end_ss << (end_instruction[i] ? '1' : '0');
+    return instructions;
+}
+
+int InstructionGenerator::assignCoreId(int i, int j) {
+    // Simple assignment: (i * 3 + j) % maxCores
+    return (i * 3 + j) % maxCores;
+}
+
+std::vector<PimInstruction> InstructionGenerator::generateForInstruction(const ThreeAddressInst& inst, int coreId) {
+    switch (inst.op) {
+        case ThreeAddressInst::OpType::LOAD:
+            return generateLoadInstructions(inst.dest, inst.src1, coreId);
+        case ThreeAddressInst::OpType::STORE:
+            return generateStoreInstructions(inst.dest, inst.src1, coreId);
+        case ThreeAddressInst::OpType::ADD:
+            return generateAddInstructions(inst.dest, inst.src1, inst.src2, coreId);
+        case ThreeAddressInst::OpType::MULTIPLY:
+            return generateMultiplyInstructions(inst.dest, inst.src1, inst.src2, coreId);
+        case ThreeAddressInst::OpType::MOVE:
+            return generateMoveInstructions(inst.dest, inst.src1, coreId);
+        default:
+            std::cerr << "Unknown instruction type" << std::endl;
+            return {};
     }
-    instructions.push_back(end_ss.str());
+}
+
+std::vector<PimInstruction> InstructionGenerator::generateLoadInstructions(const std::string& dest, const std::string& src, int coreId) {
+    std::vector<PimInstruction> instructions;
+    
+    // Map source variable to DRAM row
+    uint16_t srcRow = memoryMapper.mapVariableToRow(src);
+    
+    // Map destination variable to DRAM row
+    uint16_t destRow = memoryMapper.mapVariableToRow(dest);
+    
+    // Generate LOAD instruction
+    PimInstruction loadInst;
+    loadInst.opcode = Opcode::LOAD;
+    loadInst.core_id = coreId;
+    loadInst.row_addr = srcRow;
+    loadInst.flags = Flags::READ;
+    instructions.push_back(loadInst);
+    
+    // Generate STORE instruction to save to destination
+    PimInstruction storeInst;
+    storeInst.opcode = Opcode::STORE;
+    storeInst.core_id = coreId;
+    storeInst.row_addr = destRow;
+    storeInst.flags = Flags::WRITE;
+    instructions.push_back(storeInst);
+    
+    return instructions;
+}
+
+std::vector<PimInstruction> InstructionGenerator::generateStoreInstructions(const std::string& dest, const std::string& src, int coreId) {
+    std::vector<PimInstruction> instructions;
+    
+    // Map source variable to DRAM row
+    uint16_t srcRow = memoryMapper.mapVariableToRow(src);
+    
+    // Map destination variable to DRAM row
+    uint16_t destRow = memoryMapper.mapVariableToRow(dest);
+    
+    // Generate LOAD instruction to get the source value
+    PimInstruction loadInst;
+    loadInst.opcode = Opcode::LOAD;
+    loadInst.core_id = coreId;
+    loadInst.row_addr = srcRow;
+    loadInst.flags = Flags::READ;
+    instructions.push_back(loadInst);
+    
+    // Generate STORE instruction
+    PimInstruction storeInst;
+    storeInst.opcode = Opcode::STORE;
+    storeInst.core_id = coreId;
+    storeInst.row_addr = destRow;
+    storeInst.flags = Flags::WRITE;
+    instructions.push_back(storeInst);
+    
+    return instructions;
+}
+
+std::vector<PimInstruction> InstructionGenerator::generateAddInstructions(const std::string& dest, const std::string& src1, const std::string& src2, int coreId) {
+    std::vector<PimInstruction> instructions;
+    
+    // Map source variables to DRAM rows
+    uint16_t src1Row = memoryMapper.mapVariableToRow(src1);
+    uint16_t src2Row = memoryMapper.mapVariableToRow(src2);
+    
+    // Map destination variable to DRAM row
+    uint16_t destRow = memoryMapper.mapVariableToRow(dest);
+    
+    // Program LUT for addition
+    PimInstruction programLutInst;
+    programLutInst.opcode = Opcode::PROGRAM_LUT;
+    programLutInst.core_id = coreId;
+    programLutInst.row_addr = 0;  // Special row for LUT programming
+    programLutInst.flags = 0;     // Addition operation
+    instructions.push_back(programLutInst);
+    
+    // Load first operand
+    PimInstruction load1Inst;
+    load1Inst.opcode = Opcode::LOAD;
+    load1Inst.core_id = coreId;
+    load1Inst.row_addr = src1Row;
+    load1Inst.flags = Flags::READ;
+    instructions.push_back(load1Inst);
+    
+    // Load second operand
+    PimInstruction load2Inst;
+    load2Inst.opcode = Opcode::LOAD;
+    load2Inst.core_id = coreId;
+    load2Inst.row_addr = src2Row;
+    load2Inst.flags = Flags::READ;
+    instructions.push_back(load2Inst);
+    
+    // Compute addition
+    PimInstruction computeInst;
+    computeInst.opcode = Opcode::COMPUTE;
+    computeInst.core_id = coreId;
+    computeInst.row_addr = 0;  // Result goes to a temporary register
+    computeInst.flags = 0;
+    instructions.push_back(computeInst);
+    
+    // Store result
+    PimInstruction storeInst;
+    storeInst.opcode = Opcode::STORE;
+    storeInst.core_id = coreId;
+    storeInst.row_addr = destRow;
+    storeInst.flags = Flags::WRITE;
+    instructions.push_back(storeInst);
+    
+    return instructions;
+}
+
+std::vector<PimInstruction> InstructionGenerator::generateMultiplyInstructions(const std::string& dest, const std::string& src1, const std::string& src2, int coreId) {
+    std::vector<PimInstruction> instructions;
+    
+    // Map source variables to DRAM rows
+    uint16_t src1Row = memoryMapper.mapVariableToRow(src1);
+    uint16_t src2Row = memoryMapper.mapVariableToRow(src2);
+    
+    // Map destination variable to DRAM row
+    uint16_t destRow = memoryMapper.mapVariableToRow(dest);
+    
+    // Program LUT for multiplication
+    PimInstruction programLutInst;
+    programLutInst.opcode = Opcode::PROGRAM_LUT;
+    programLutInst.core_id = coreId;
+    programLutInst.row_addr = 0;  // Special row for LUT programming
+    programLutInst.flags = 1;     // Multiplication operation
+    instructions.push_back(programLutInst);
+    
+    // Load first operand
+    PimInstruction load1Inst;
+    load1Inst.opcode = Opcode::LOAD;
+    load1Inst.core_id = coreId;
+    load1Inst.row_addr = src1Row;
+    load1Inst.flags = Flags::READ;
+    instructions.push_back(load1Inst);
+    
+    // Load second operand
+    PimInstruction load2Inst;
+    load2Inst.opcode = Opcode::LOAD;
+    load2Inst.core_id = coreId;
+    load2Inst.row_addr = src2Row;
+    load2Inst.flags = Flags::READ;
+    instructions.push_back(load2Inst);
+    
+    // Compute multiplication
+    PimInstruction computeInst;
+    computeInst.opcode = Opcode::COMPUTE;
+    computeInst.core_id = coreId;
+    computeInst.row_addr = 0;  // Result goes to a temporary register
+    computeInst.flags = 0;
+    instructions.push_back(computeInst);
+    
+    // Store result
+    PimInstruction storeInst;
+    storeInst.opcode = Opcode::STORE;
+    storeInst.core_id = coreId;
+    storeInst.row_addr = destRow;
+    storeInst.flags = Flags::WRITE;
+    instructions.push_back(storeInst);
+    
+    return instructions;
+}
+
+std::vector<PimInstruction> InstructionGenerator::generateMoveInstructions(const std::string& dest, const std::string& src, int coreId) {
+    std::vector<PimInstruction> instructions;
+    
+    // Map destination variable to DRAM row
+    uint16_t destRow = memoryMapper.mapVariableToRow(dest);
+    
+    // Check if source is a constant
+    if (src == "0") {
+        // Generate a MOVE instruction with constant 0
+        PimInstruction moveInst;
+        moveInst.opcode = Opcode::MOVE;
+        moveInst.core_id = coreId;
+        moveInst.row_addr = destRow;
+        moveInst.flags = Flags::WRITE | Flags::RESET;  // RESET flag indicates constant 0
+        instructions.push_back(moveInst);
+    } else {
+        // Map source variable to DRAM row
+        uint16_t srcRow = memoryMapper.mapVariableToRow(src);
+        
+        // Generate LOAD instruction
+        PimInstruction loadInst;
+        loadInst.opcode = Opcode::LOAD;
+        loadInst.core_id = coreId;
+        loadInst.row_addr = srcRow;
+        loadInst.flags = Flags::READ;
+        instructions.push_back(loadInst);
+        
+        // Generate STORE instruction
+        PimInstruction storeInst;
+        storeInst.opcode = Opcode::STORE;
+        storeInst.core_id = coreId;
+        storeInst.row_addr = destRow;
+        storeInst.flags = Flags::WRITE;
+        instructions.push_back(storeInst);
+    }
     
     return instructions;
 }
