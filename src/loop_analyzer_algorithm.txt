@@ -1,0 +1,27 @@
+LOOP ANALYSIS ALGORITHM:
+
+1. Loop Detection:
+   - Identify loop structures in LLVM IR
+   - Classify loops (inner/outer, perfect/non-perfect)
+   - Extract loop bounds and trip counts
+
+2. Dependency Analysis:
+   - Detect loop-carried dependencies
+   - Analyze memory access patterns
+   - Identify parallelizable loops
+
+3. PIM Optimization Analysis:
+   - Determine PIM-suitable loop candidates
+   - Estimate memory bandwidth requirements
+   - Calculate potential speedup from PIM execution
+
+4. Transformation Planning:
+   - Generate PIM-specific loop transformations
+   - Plan memory mapping strategies
+   - Prepare scheduling constraints
+
+Design Considerations:
+- Handle both regular and irregular loops
+- Support multi-level loop nests
+- Integrate with memory mapper for co-optimization
+- Provide detailed profiling information

@@ -1,0 +1,36 @@
+Overall Algorithm for Custom PIM Architecture Translator using LLVM:
+
+1. Initialization:
+   - Load LLVM IR input
+   - Initialize PIM architecture specifications
+   - Set up transformation passes
+
+2. Analysis Phase:
+   - Perform loop analysis to identify PIM-eligible regions
+   - Analyze memory access patterns
+   - Identify computation-intensive sections
+
+3. Transformation Phase:
+   - Apply memory mapping transformations
+   - Insert PIM-specific instructions
+   - Optimize data movement between host and PIM
+
+4. Code Generation:
+   - Generate modified LLVM IR with PIM operations
+   - Produce architecture-specific configuration
+   - Create metadata for PIM runtime
+
+5. Verification:
+   - Validate transformed code semantics
+   - Check PIM architecture constraints
+   - Ensure performance improvements
+
+Data Flow:
+- LLVM IR → Analysis → Transformation → Modified IR
+- Architecture Specs → Transformation → Configuration
+
+Key Features:
+- Unified analysis and transformation pipeline
+- Architecture-aware optimization passes
+- Comprehensive verification framework
+- Extensible plugin system for different PIM architectures

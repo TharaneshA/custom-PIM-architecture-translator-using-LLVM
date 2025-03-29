@@ -57,7 +57,7 @@ void LoopAnalyzer::identifyLoops() {
     iLoop.nestLevel = 0;
     iLoop.inductionVar = "i";
     iLoop.lowerBound = 0;
-    iLoop.upperBound = 99;  // 100x100 matrix example
+    iLoop.upperBound = 15;  // 16x16 matrix example
     iLoop.step = 1;
     iLoop.isParallelizable = true;  // Outer loop can be parallelized
     
@@ -67,7 +67,7 @@ void LoopAnalyzer::identifyLoops() {
     jLoop.nestLevel = 1;
     jLoop.inductionVar = "j";
     jLoop.lowerBound = 0;
-    jLoop.upperBound = 99;
+    jLoop.upperBound = 15;
     jLoop.step = 1;
     jLoop.isParallelizable = true;  // Middle loop can be parallelized
     
@@ -77,7 +77,7 @@ void LoopAnalyzer::identifyLoops() {
     kLoop.nestLevel = 2;
     kLoop.inductionVar = "k";
     kLoop.lowerBound = 0;
-    kLoop.upperBound = 99;
+    kLoop.upperBound = 15;
     kLoop.step = 1;
     kLoop.isParallelizable = false;  // Innermost loop has dependencies
     

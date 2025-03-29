@@ -1,0 +1,27 @@
+INSTRUCTION GENERATION ALGORITHM:
+
+1. Instruction Analysis:
+   - Analyze LLVM IR instructions
+   - Identify PIM-compatible operations
+   - Classify instruction types (compute/memory/control)
+
+2. PIM Instruction Mapping:
+   - Map LLVM instructions to PIM ISA
+   - Handle instruction variants and addressing modes
+   - Generate PIM-specific operation sequences
+
+3. Optimization:
+   - Combine compatible operations
+   - Eliminate redundant instructions
+   - Optimize for PIM execution characteristics
+
+4. Code Emission:
+   - Generate PIM instruction sequences
+   - Insert necessary synchronization
+   - Produce architecture-specific metadata
+
+Design Considerations:
+- Support multiple PIM instruction sets
+- Handle instruction dependencies
+- Provide detailed instruction statistics
+- Integrate with loop analyzer and memory mapper

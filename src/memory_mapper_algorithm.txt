@@ -1,0 +1,27 @@
+MEMORY MAPPING ALGORITHM:
+
+1. Memory Analysis:
+   - Analyze memory access patterns in LLVM IR
+   - Identify frequently accessed memory regions
+   - Calculate memory bandwidth requirements
+
+2. PIM Memory Allocation:
+   - Determine optimal PIM memory regions
+   - Map data structures to PIM memory
+   - Consider data locality and access patterns
+
+3. Address Translation:
+   - Generate virtual-to-physical address mapping
+   - Create memory access descriptors
+   - Handle memory consistency requirements
+
+4. Optimization:
+   - Minimize data movement between host and PIM
+   - Balance memory distribution between host and PIM
+   - Optimize for PIM memory characteristics
+
+Design Considerations:
+- Support multiple PIM memory architectures
+- Handle both regular and irregular memory patterns
+- Provide detailed memory access statistics
+- Integrate with loop analyzer for co-optimization

@@ -15,7 +15,7 @@ void matrixMultiply(const std::vector<std::vector<int>>& A,
 }
 
 int main() {
-    const int N = 100;
+    const int N = 16;
     std::vector<std::vector<int>> A(N, std::vector<int>(N));
     std::vector<std::vector<int>> B(N, std::vector<int>(N));
     std::vector<std::vector<int>> C(N, std::vector<int>(N, 0));
