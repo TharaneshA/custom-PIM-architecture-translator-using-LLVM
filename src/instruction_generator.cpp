@@ -22,7 +22,7 @@ std::vector<PimInstruction> InstructionGenerator::generateInstructions() {
     // For matrix multiplication, we can parallelize the i and j loops
     // We'll distribute the work across cores based on the (i,j) pairs
     
-    // Initialize matrix A with values (i+1)*(k+1) and matrix B with values (k+1)*(j+1)
+    // Initialize matrix A with values (i*2 + k) and matrix B with values (k*3 + j)
     // Process the three-address code
     for (int i = 0; i <= 2; i++) {  // i loop (0-2 for 3x3 example)
         for (int j = 0; j <= 2; j++) {  // j loop (0-2 for 3x3 example)
