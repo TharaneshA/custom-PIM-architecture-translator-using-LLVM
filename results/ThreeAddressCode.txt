@@ -1,41 +1,62 @@
 Three-Address Code:
 STORE t18446744073709551615 to
 STORE t0 to
-t2 = LOAD
+STORE t1 to
 STORE t2 to
 t4 = LOAD
-t5 = LOAD
+STORE t4 to
 t6 = LOAD
-t7 =  +
+t7 = LOAD
 t8 = LOAD
-t9 = LOAD
-STORE t9 to
+t9 =  +
+t10 = t8 + t9
 t11 = LOAD
 t12 = LOAD
-t13 =  *
-t14 = t12 + t13
+STORE t12 to
+t14 = LOAD
 t15 = LOAD
-t16 = LOAD
-STORE t16 to
+t16 =  *
+t17 = t15 * t16
 t18 = LOAD
-t19 =  + t18
+t19 = LOAD
 STORE t19 to
 t21 = LOAD
 t22 =  + t21
 STORE t22 to
 STORE t23 to
-t25 = LOAD
+STORE t24 to
 STORE t25 to
-t27 = LOAD
-t28 = LOAD
-t29 = LOAD
-t30 = LOAD
-t31 = LOAD
-t32 =  + t31
+STORE t26 to
+STORE t27 to
+STORE t28 to
+STORE t29 to
+STORE t30 to
+STORE t31 to
 STORE t32 to
-t34 = LOAD
-t35 =  + t34
-STORE t35 to
+STORE t33 to
+STORE t34 to
+t36 = LOAD
+t37 =  + t36
+STORE t37 to
+STORE t38 to
+t40 = LOAD
+STORE t40 to
+t42 = LOAD
+t43 = LOAD
+t44 = LOAD
+t45 = LOAD
+t46 = LOAD
+t47 =  + t46
+STORE t47 to
+STORE t48 to
+STORE t49 to
+t51 = LOAD
+t52 =  + t51
+STORE t52 to
+STORE t53 to
+t55 = LOAD
+t56 = LOAD
+t57 = LOAD
 C_0_0 = 0
 t_A_0_0 = LOAD A_0_0
 t_B_0_0 = LOAD B_0_0
@@ -209,9 +230,10 @@ t_C_new_2_2 = t_C_2_2 + t_mul_2_2_2
 STORE t_C_new_2_2 to C_2_2
 
 Identified Loops:
-Loop i: Nest Level = 0, Range = [0, 2], Parallelizable = Yes
-Loop j: Nest Level = 1, Range = [0, 2], Parallelizable = Yes
-Loop k: Nest Level = 2, Range = [0, 2], Parallelizable = No
+Loop i: Nest Level = 0, Range = [0, 99], Parallelizable = Yes
+Loop j: Nest Level = 1, Range = [0, 99], Parallelizable = Yes
+Loop k: Nest Level = 2, Range = [0, 99], Parallelizable = No
 
 Generated 504 PIM ISA instructions.
 Instructions written to matrix_mult.isa
+Segmentation fault (core dumped)

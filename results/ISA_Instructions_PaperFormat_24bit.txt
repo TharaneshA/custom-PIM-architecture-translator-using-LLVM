@@ -1,507 +1,507 @@
-# PIM ISA Instructions in Paper Format (24-bit)
-# Format: [Hex] [OpType] ptr=[Pointer] rd=[ReadBit] wr=[WriteBit] row=[RowAddress]
+# PIM ISA Instructions for Matrix Multiplication
+# Format: [Binary] [Opcode] core=[Core ID] row=[Row Address] flags=[Flags]
 
-00c000 NoOp ptr=0x0 rd=1 wr=1 row=0x00
-008000 NoOp ptr=0x0 rd=1 wr=0 row=0x00
-004000 NoOp ptr=0x0 rd=0 wr=1 row=0x00
-008000 NoOp ptr=0x0 rd=1 wr=0 row=0x00
-004040 NoOp ptr=0x0 rd=0 wr=1 row=0x01
-400000 PROG ptr=0x0 rd=0 wr=0 row=0x00
-008000 NoOp ptr=0x0 rd=1 wr=0 row=0x00
-008040 NoOp ptr=0x0 rd=1 wr=0 row=0x01
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-004080 NoOp ptr=0x0 rd=0 wr=1 row=0x02
-008000 NoOp ptr=0x0 rd=1 wr=0 row=0x00
-0040c0 NoOp ptr=0x0 rd=0 wr=1 row=0x03
-400000 PROG ptr=0x0 rd=0 wr=0 row=0x00
-0080c0 NoOp ptr=0x0 rd=1 wr=0 row=0x03
-008080 NoOp ptr=0x0 rd=1 wr=0 row=0x02
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-004100 NoOp ptr=0x0 rd=0 wr=1 row=0x04
-008100 NoOp ptr=0x0 rd=1 wr=0 row=0x04
-004000 NoOp ptr=0x0 rd=0 wr=1 row=0x00
-008040 NoOp ptr=0x0 rd=1 wr=0 row=0x01
-004140 NoOp ptr=0x0 rd=0 wr=1 row=0x05
-008000 NoOp ptr=0x0 rd=1 wr=0 row=0x00
-004180 NoOp ptr=0x0 rd=0 wr=1 row=0x06
-400000 PROG ptr=0x0 rd=0 wr=0 row=0x00
-008140 NoOp ptr=0x0 rd=1 wr=0 row=0x05
-008180 NoOp ptr=0x0 rd=1 wr=0 row=0x06
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-0041c0 NoOp ptr=0x0 rd=0 wr=1 row=0x07
-008000 NoOp ptr=0x0 rd=1 wr=0 row=0x00
-0040c0 NoOp ptr=0x0 rd=0 wr=1 row=0x03
-400000 PROG ptr=0x0 rd=0 wr=0 row=0x00
-0080c0 NoOp ptr=0x0 rd=1 wr=0 row=0x03
-0081c0 NoOp ptr=0x0 rd=1 wr=0 row=0x07
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-004100 NoOp ptr=0x0 rd=0 wr=1 row=0x04
-008100 NoOp ptr=0x0 rd=1 wr=0 row=0x04
-004000 NoOp ptr=0x0 rd=0 wr=1 row=0x00
-008080 NoOp ptr=0x0 rd=1 wr=0 row=0x02
-004200 NoOp ptr=0x0 rd=0 wr=1 row=0x08
-008000 NoOp ptr=0x0 rd=1 wr=0 row=0x00
-004240 NoOp ptr=0x0 rd=0 wr=1 row=0x09
-400000 PROG ptr=0x0 rd=0 wr=0 row=0x00
-008200 NoOp ptr=0x0 rd=1 wr=0 row=0x08
-008240 NoOp ptr=0x0 rd=1 wr=0 row=0x09
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-004400 NoOp ptr=0x0 rd=0 wr=1 row=0x10
-008000 NoOp ptr=0x0 rd=1 wr=0 row=0x00
-0040c0 NoOp ptr=0x0 rd=0 wr=1 row=0x03
-400000 PROG ptr=0x0 rd=0 wr=0 row=0x00
-0080c0 NoOp ptr=0x0 rd=1 wr=0 row=0x03
-008400 NoOp ptr=0x0 rd=1 wr=0 row=0x10
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-004100 NoOp ptr=0x0 rd=0 wr=1 row=0x04
-008100 NoOp ptr=0x0 rd=1 wr=0 row=0x04
-004000 NoOp ptr=0x0 rd=0 wr=1 row=0x00
-c00000 END ptr=0x0 rd=0 wr=0 row=0x00
-01c040 NoOp ptr=0x1 rd=1 wr=1 row=0x01
-018000 NoOp ptr=0x1 rd=1 wr=0 row=0x00
-014000 NoOp ptr=0x1 rd=0 wr=1 row=0x00
-018040 NoOp ptr=0x1 rd=1 wr=0 row=0x01
-014440 NoOp ptr=0x1 rd=0 wr=1 row=0x11
-410000 PROG ptr=0x1 rd=0 wr=0 row=0x00
-018000 NoOp ptr=0x1 rd=1 wr=0 row=0x00
-018440 NoOp ptr=0x1 rd=1 wr=0 row=0x11
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-014480 NoOp ptr=0x1 rd=0 wr=1 row=0x12
-018040 NoOp ptr=0x1 rd=1 wr=0 row=0x01
-0144c0 NoOp ptr=0x1 rd=0 wr=1 row=0x13
-410000 PROG ptr=0x1 rd=0 wr=0 row=0x00
-0184c0 NoOp ptr=0x1 rd=1 wr=0 row=0x13
-018480 NoOp ptr=0x1 rd=1 wr=0 row=0x12
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-014500 NoOp ptr=0x1 rd=0 wr=1 row=0x14
-018500 NoOp ptr=0x1 rd=1 wr=0 row=0x14
-014040 NoOp ptr=0x1 rd=0 wr=1 row=0x01
-018040 NoOp ptr=0x1 rd=1 wr=0 row=0x01
-014140 NoOp ptr=0x1 rd=0 wr=1 row=0x05
-018040 NoOp ptr=0x1 rd=1 wr=0 row=0x01
-014540 NoOp ptr=0x1 rd=0 wr=1 row=0x15
-410000 PROG ptr=0x1 rd=0 wr=0 row=0x00
-018140 NoOp ptr=0x1 rd=1 wr=0 row=0x05
-018540 NoOp ptr=0x1 rd=1 wr=0 row=0x15
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-014580 NoOp ptr=0x1 rd=0 wr=1 row=0x16
-018040 NoOp ptr=0x1 rd=1 wr=0 row=0x01
-0144c0 NoOp ptr=0x1 rd=0 wr=1 row=0x13
-410000 PROG ptr=0x1 rd=0 wr=0 row=0x00
-0184c0 NoOp ptr=0x1 rd=1 wr=0 row=0x13
-018580 NoOp ptr=0x1 rd=1 wr=0 row=0x16
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-014500 NoOp ptr=0x1 rd=0 wr=1 row=0x14
-018500 NoOp ptr=0x1 rd=1 wr=0 row=0x14
-014040 NoOp ptr=0x1 rd=0 wr=1 row=0x01
-018080 NoOp ptr=0x1 rd=1 wr=0 row=0x02
-014200 NoOp ptr=0x1 rd=0 wr=1 row=0x08
-018040 NoOp ptr=0x1 rd=1 wr=0 row=0x01
-0145c0 NoOp ptr=0x1 rd=0 wr=1 row=0x17
-410000 PROG ptr=0x1 rd=0 wr=0 row=0x00
-018200 NoOp ptr=0x1 rd=1 wr=0 row=0x08
-0185c0 NoOp ptr=0x1 rd=1 wr=0 row=0x17
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-014600 NoOp ptr=0x1 rd=0 wr=1 row=0x18
-018040 NoOp ptr=0x1 rd=1 wr=0 row=0x01
-0144c0 NoOp ptr=0x1 rd=0 wr=1 row=0x13
-410000 PROG ptr=0x1 rd=0 wr=0 row=0x00
-0184c0 NoOp ptr=0x1 rd=1 wr=0 row=0x13
-018600 NoOp ptr=0x1 rd=1 wr=0 row=0x18
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-014500 NoOp ptr=0x1 rd=0 wr=1 row=0x14
-018500 NoOp ptr=0x1 rd=1 wr=0 row=0x14
-014040 NoOp ptr=0x1 rd=0 wr=1 row=0x01
-c10000 END ptr=0x1 rd=0 wr=0 row=0x00
-02c080 NoOp ptr=0x2 rd=1 wr=1 row=0x02
-028000 NoOp ptr=0x2 rd=1 wr=0 row=0x00
-024000 NoOp ptr=0x2 rd=0 wr=1 row=0x00
-028080 NoOp ptr=0x2 rd=1 wr=0 row=0x02
-024640 NoOp ptr=0x2 rd=0 wr=1 row=0x19
-420000 PROG ptr=0x2 rd=0 wr=0 row=0x00
-028000 NoOp ptr=0x2 rd=1 wr=0 row=0x00
-028640 NoOp ptr=0x2 rd=1 wr=0 row=0x19
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-024800 NoOp ptr=0x2 rd=0 wr=1 row=0x20
-028080 NoOp ptr=0x2 rd=1 wr=0 row=0x02
-024840 NoOp ptr=0x2 rd=0 wr=1 row=0x21
-420000 PROG ptr=0x2 rd=0 wr=0 row=0x00
-028840 NoOp ptr=0x2 rd=1 wr=0 row=0x21
-028800 NoOp ptr=0x2 rd=1 wr=0 row=0x20
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-024880 NoOp ptr=0x2 rd=0 wr=1 row=0x22
-028880 NoOp ptr=0x2 rd=1 wr=0 row=0x22
-024080 NoOp ptr=0x2 rd=0 wr=1 row=0x02
-028040 NoOp ptr=0x2 rd=1 wr=0 row=0x01
-024140 NoOp ptr=0x2 rd=0 wr=1 row=0x05
-028080 NoOp ptr=0x2 rd=1 wr=0 row=0x02
-0248c0 NoOp ptr=0x2 rd=0 wr=1 row=0x23
-420000 PROG ptr=0x2 rd=0 wr=0 row=0x00
-028140 NoOp ptr=0x2 rd=1 wr=0 row=0x05
-0288c0 NoOp ptr=0x2 rd=1 wr=0 row=0x23
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-024900 NoOp ptr=0x2 rd=0 wr=1 row=0x24
-028080 NoOp ptr=0x2 rd=1 wr=0 row=0x02
-024840 NoOp ptr=0x2 rd=0 wr=1 row=0x21
-420000 PROG ptr=0x2 rd=0 wr=0 row=0x00
-028840 NoOp ptr=0x2 rd=1 wr=0 row=0x21
-028900 NoOp ptr=0x2 rd=1 wr=0 row=0x24
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-024880 NoOp ptr=0x2 rd=0 wr=1 row=0x22
-028880 NoOp ptr=0x2 rd=1 wr=0 row=0x22
-024080 NoOp ptr=0x2 rd=0 wr=1 row=0x02
-028080 NoOp ptr=0x2 rd=1 wr=0 row=0x02
-024200 NoOp ptr=0x2 rd=0 wr=1 row=0x08
-028080 NoOp ptr=0x2 rd=1 wr=0 row=0x02
-024940 NoOp ptr=0x2 rd=0 wr=1 row=0x25
-420000 PROG ptr=0x2 rd=0 wr=0 row=0x00
-028200 NoOp ptr=0x2 rd=1 wr=0 row=0x08
-028940 NoOp ptr=0x2 rd=1 wr=0 row=0x25
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-024980 NoOp ptr=0x2 rd=0 wr=1 row=0x26
-028080 NoOp ptr=0x2 rd=1 wr=0 row=0x02
-024840 NoOp ptr=0x2 rd=0 wr=1 row=0x21
-420000 PROG ptr=0x2 rd=0 wr=0 row=0x00
-028840 NoOp ptr=0x2 rd=1 wr=0 row=0x21
-028980 NoOp ptr=0x2 rd=1 wr=0 row=0x26
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-024880 NoOp ptr=0x2 rd=0 wr=1 row=0x22
-028880 NoOp ptr=0x2 rd=1 wr=0 row=0x22
-024080 NoOp ptr=0x2 rd=0 wr=1 row=0x02
-c20000 END ptr=0x2 rd=0 wr=0 row=0x00
-03c000 NoOp ptr=0x3 rd=1 wr=1 row=0x00
-038000 NoOp ptr=0x3 rd=1 wr=0 row=0x00
-0349c0 NoOp ptr=0x3 rd=0 wr=1 row=0x27
-038000 NoOp ptr=0x3 rd=1 wr=0 row=0x00
-034040 NoOp ptr=0x3 rd=0 wr=1 row=0x01
-430000 PROG ptr=0x3 rd=0 wr=0 row=0x00
-0389c0 NoOp ptr=0x3 rd=1 wr=0 row=0x27
-038040 NoOp ptr=0x3 rd=1 wr=0 row=0x01
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-034a00 NoOp ptr=0x3 rd=0 wr=1 row=0x28
-038000 NoOp ptr=0x3 rd=1 wr=0 row=0x00
-034a40 NoOp ptr=0x3 rd=0 wr=1 row=0x29
-430000 PROG ptr=0x3 rd=0 wr=0 row=0x00
-038a40 NoOp ptr=0x3 rd=1 wr=0 row=0x29
-038a00 NoOp ptr=0x3 rd=1 wr=0 row=0x28
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-034c00 NoOp ptr=0x3 rd=0 wr=1 row=0x30
-038c00 NoOp ptr=0x3 rd=1 wr=0 row=0x30
-034000 NoOp ptr=0x3 rd=0 wr=1 row=0x00
-038040 NoOp ptr=0x3 rd=1 wr=0 row=0x01
-034c40 NoOp ptr=0x3 rd=0 wr=1 row=0x31
-038000 NoOp ptr=0x3 rd=1 wr=0 row=0x00
-034180 NoOp ptr=0x3 rd=0 wr=1 row=0x06
-430000 PROG ptr=0x3 rd=0 wr=0 row=0x00
-038c40 NoOp ptr=0x3 rd=1 wr=0 row=0x31
-038180 NoOp ptr=0x3 rd=1 wr=0 row=0x06
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-034c80 NoOp ptr=0x3 rd=0 wr=1 row=0x32
-038000 NoOp ptr=0x3 rd=1 wr=0 row=0x00
-034a40 NoOp ptr=0x3 rd=0 wr=1 row=0x29
-430000 PROG ptr=0x3 rd=0 wr=0 row=0x00
-038a40 NoOp ptr=0x3 rd=1 wr=0 row=0x29
-038c80 NoOp ptr=0x3 rd=1 wr=0 row=0x32
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-034c00 NoOp ptr=0x3 rd=0 wr=1 row=0x30
-038c00 NoOp ptr=0x3 rd=1 wr=0 row=0x30
-034000 NoOp ptr=0x3 rd=0 wr=1 row=0x00
-038080 NoOp ptr=0x3 rd=1 wr=0 row=0x02
-034cc0 NoOp ptr=0x3 rd=0 wr=1 row=0x33
-038000 NoOp ptr=0x3 rd=1 wr=0 row=0x00
-034240 NoOp ptr=0x3 rd=0 wr=1 row=0x09
-430000 PROG ptr=0x3 rd=0 wr=0 row=0x00
-038cc0 NoOp ptr=0x3 rd=1 wr=0 row=0x33
-038240 NoOp ptr=0x3 rd=1 wr=0 row=0x09
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-034d00 NoOp ptr=0x3 rd=0 wr=1 row=0x34
-038000 NoOp ptr=0x3 rd=1 wr=0 row=0x00
-034a40 NoOp ptr=0x3 rd=0 wr=1 row=0x29
-430000 PROG ptr=0x3 rd=0 wr=0 row=0x00
-038a40 NoOp ptr=0x3 rd=1 wr=0 row=0x29
-038d00 NoOp ptr=0x3 rd=1 wr=0 row=0x34
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-034c00 NoOp ptr=0x3 rd=0 wr=1 row=0x30
-038c00 NoOp ptr=0x3 rd=1 wr=0 row=0x30
-034000 NoOp ptr=0x3 rd=0 wr=1 row=0x00
-c30000 END ptr=0x3 rd=0 wr=0 row=0x00
-04c040 NoOp ptr=0x4 rd=1 wr=1 row=0x01
-048000 NoOp ptr=0x4 rd=1 wr=0 row=0x00
-0449c0 NoOp ptr=0x4 rd=0 wr=1 row=0x27
-048040 NoOp ptr=0x4 rd=1 wr=0 row=0x01
-044440 NoOp ptr=0x4 rd=0 wr=1 row=0x11
-440000 PROG ptr=0x4 rd=0 wr=0 row=0x00
-0489c0 NoOp ptr=0x4 rd=1 wr=0 row=0x27
-048440 NoOp ptr=0x4 rd=1 wr=0 row=0x11
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-044d40 NoOp ptr=0x4 rd=0 wr=1 row=0x35
-048040 NoOp ptr=0x4 rd=1 wr=0 row=0x01
-044d80 NoOp ptr=0x4 rd=0 wr=1 row=0x36
-440000 PROG ptr=0x4 rd=0 wr=0 row=0x00
-048d80 NoOp ptr=0x4 rd=1 wr=0 row=0x36
-048d40 NoOp ptr=0x4 rd=1 wr=0 row=0x35
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-044dc0 NoOp ptr=0x4 rd=0 wr=1 row=0x37
-048dc0 NoOp ptr=0x4 rd=1 wr=0 row=0x37
-044040 NoOp ptr=0x4 rd=0 wr=1 row=0x01
-048040 NoOp ptr=0x4 rd=1 wr=0 row=0x01
-044c40 NoOp ptr=0x4 rd=0 wr=1 row=0x31
-048040 NoOp ptr=0x4 rd=1 wr=0 row=0x01
-044540 NoOp ptr=0x4 rd=0 wr=1 row=0x15
-440000 PROG ptr=0x4 rd=0 wr=0 row=0x00
-048c40 NoOp ptr=0x4 rd=1 wr=0 row=0x31
-048540 NoOp ptr=0x4 rd=1 wr=0 row=0x15
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-044e00 NoOp ptr=0x4 rd=0 wr=1 row=0x38
-048040 NoOp ptr=0x4 rd=1 wr=0 row=0x01
-044d80 NoOp ptr=0x4 rd=0 wr=1 row=0x36
-440000 PROG ptr=0x4 rd=0 wr=0 row=0x00
-048d80 NoOp ptr=0x4 rd=1 wr=0 row=0x36
-048e00 NoOp ptr=0x4 rd=1 wr=0 row=0x38
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-044dc0 NoOp ptr=0x4 rd=0 wr=1 row=0x37
-048dc0 NoOp ptr=0x4 rd=1 wr=0 row=0x37
-044040 NoOp ptr=0x4 rd=0 wr=1 row=0x01
-048080 NoOp ptr=0x4 rd=1 wr=0 row=0x02
-044cc0 NoOp ptr=0x4 rd=0 wr=1 row=0x33
-048040 NoOp ptr=0x4 rd=1 wr=0 row=0x01
-0445c0 NoOp ptr=0x4 rd=0 wr=1 row=0x17
-440000 PROG ptr=0x4 rd=0 wr=0 row=0x00
-048cc0 NoOp ptr=0x4 rd=1 wr=0 row=0x33
-0485c0 NoOp ptr=0x4 rd=1 wr=0 row=0x17
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-044e40 NoOp ptr=0x4 rd=0 wr=1 row=0x39
-048040 NoOp ptr=0x4 rd=1 wr=0 row=0x01
-044d80 NoOp ptr=0x4 rd=0 wr=1 row=0x36
-440000 PROG ptr=0x4 rd=0 wr=0 row=0x00
-048d80 NoOp ptr=0x4 rd=1 wr=0 row=0x36
-048e40 NoOp ptr=0x4 rd=1 wr=0 row=0x39
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-044dc0 NoOp ptr=0x4 rd=0 wr=1 row=0x37
-048dc0 NoOp ptr=0x4 rd=1 wr=0 row=0x37
-044040 NoOp ptr=0x4 rd=0 wr=1 row=0x01
-c40000 END ptr=0x4 rd=0 wr=0 row=0x00
-05c080 NoOp ptr=0x5 rd=1 wr=1 row=0x02
-058000 NoOp ptr=0x5 rd=1 wr=0 row=0x00
-0549c0 NoOp ptr=0x5 rd=0 wr=1 row=0x27
-058080 NoOp ptr=0x5 rd=1 wr=0 row=0x02
-054640 NoOp ptr=0x5 rd=0 wr=1 row=0x19
-450000 PROG ptr=0x5 rd=0 wr=0 row=0x00
-0589c0 NoOp ptr=0x5 rd=1 wr=0 row=0x27
-058640 NoOp ptr=0x5 rd=1 wr=0 row=0x19
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-055000 NoOp ptr=0x5 rd=0 wr=1 row=0x40
-058080 NoOp ptr=0x5 rd=1 wr=0 row=0x02
-055040 NoOp ptr=0x5 rd=0 wr=1 row=0x41
-450000 PROG ptr=0x5 rd=0 wr=0 row=0x00
-059040 NoOp ptr=0x5 rd=1 wr=0 row=0x41
-059000 NoOp ptr=0x5 rd=1 wr=0 row=0x40
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-055080 NoOp ptr=0x5 rd=0 wr=1 row=0x42
-059080 NoOp ptr=0x5 rd=1 wr=0 row=0x42
-054080 NoOp ptr=0x5 rd=0 wr=1 row=0x02
-058040 NoOp ptr=0x5 rd=1 wr=0 row=0x01
-054c40 NoOp ptr=0x5 rd=0 wr=1 row=0x31
-058080 NoOp ptr=0x5 rd=1 wr=0 row=0x02
-0548c0 NoOp ptr=0x5 rd=0 wr=1 row=0x23
-450000 PROG ptr=0x5 rd=0 wr=0 row=0x00
-058c40 NoOp ptr=0x5 rd=1 wr=0 row=0x31
-0588c0 NoOp ptr=0x5 rd=1 wr=0 row=0x23
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-0550c0 NoOp ptr=0x5 rd=0 wr=1 row=0x43
-058080 NoOp ptr=0x5 rd=1 wr=0 row=0x02
-055040 NoOp ptr=0x5 rd=0 wr=1 row=0x41
-450000 PROG ptr=0x5 rd=0 wr=0 row=0x00
-059040 NoOp ptr=0x5 rd=1 wr=0 row=0x41
-0590c0 NoOp ptr=0x5 rd=1 wr=0 row=0x43
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-055080 NoOp ptr=0x5 rd=0 wr=1 row=0x42
-059080 NoOp ptr=0x5 rd=1 wr=0 row=0x42
-054080 NoOp ptr=0x5 rd=0 wr=1 row=0x02
-058080 NoOp ptr=0x5 rd=1 wr=0 row=0x02
-054cc0 NoOp ptr=0x5 rd=0 wr=1 row=0x33
-058080 NoOp ptr=0x5 rd=1 wr=0 row=0x02
-054940 NoOp ptr=0x5 rd=0 wr=1 row=0x25
-450000 PROG ptr=0x5 rd=0 wr=0 row=0x00
-058cc0 NoOp ptr=0x5 rd=1 wr=0 row=0x33
-058940 NoOp ptr=0x5 rd=1 wr=0 row=0x25
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-055100 NoOp ptr=0x5 rd=0 wr=1 row=0x44
-058080 NoOp ptr=0x5 rd=1 wr=0 row=0x02
-055040 NoOp ptr=0x5 rd=0 wr=1 row=0x41
-450000 PROG ptr=0x5 rd=0 wr=0 row=0x00
-059040 NoOp ptr=0x5 rd=1 wr=0 row=0x41
-059100 NoOp ptr=0x5 rd=1 wr=0 row=0x44
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-055080 NoOp ptr=0x5 rd=0 wr=1 row=0x42
-059080 NoOp ptr=0x5 rd=1 wr=0 row=0x42
-054080 NoOp ptr=0x5 rd=0 wr=1 row=0x02
-c50000 END ptr=0x5 rd=0 wr=0 row=0x00
-06c000 NoOp ptr=0x6 rd=1 wr=1 row=0x00
-068000 NoOp ptr=0x6 rd=1 wr=0 row=0x00
-065140 NoOp ptr=0x6 rd=0 wr=1 row=0x45
-068000 NoOp ptr=0x6 rd=1 wr=0 row=0x00
-064040 NoOp ptr=0x6 rd=0 wr=1 row=0x01
-460000 PROG ptr=0x6 rd=0 wr=0 row=0x00
-069140 NoOp ptr=0x6 rd=1 wr=0 row=0x45
-068040 NoOp ptr=0x6 rd=1 wr=0 row=0x01
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-065180 NoOp ptr=0x6 rd=0 wr=1 row=0x46
-068000 NoOp ptr=0x6 rd=1 wr=0 row=0x00
-0651c0 NoOp ptr=0x6 rd=0 wr=1 row=0x47
-460000 PROG ptr=0x6 rd=0 wr=0 row=0x00
-0691c0 NoOp ptr=0x6 rd=1 wr=0 row=0x47
-069180 NoOp ptr=0x6 rd=1 wr=0 row=0x46
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-065200 NoOp ptr=0x6 rd=0 wr=1 row=0x48
-069200 NoOp ptr=0x6 rd=1 wr=0 row=0x48
-064000 NoOp ptr=0x6 rd=0 wr=1 row=0x00
-068040 NoOp ptr=0x6 rd=1 wr=0 row=0x01
-065240 NoOp ptr=0x6 rd=0 wr=1 row=0x49
-068000 NoOp ptr=0x6 rd=1 wr=0 row=0x00
-064180 NoOp ptr=0x6 rd=0 wr=1 row=0x06
-460000 PROG ptr=0x6 rd=0 wr=0 row=0x00
-069240 NoOp ptr=0x6 rd=1 wr=0 row=0x49
-068180 NoOp ptr=0x6 rd=1 wr=0 row=0x06
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-065400 NoOp ptr=0x6 rd=0 wr=1 row=0x50
-068000 NoOp ptr=0x6 rd=1 wr=0 row=0x00
-0651c0 NoOp ptr=0x6 rd=0 wr=1 row=0x47
-460000 PROG ptr=0x6 rd=0 wr=0 row=0x00
-0691c0 NoOp ptr=0x6 rd=1 wr=0 row=0x47
-069400 NoOp ptr=0x6 rd=1 wr=0 row=0x50
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-065200 NoOp ptr=0x6 rd=0 wr=1 row=0x48
-069200 NoOp ptr=0x6 rd=1 wr=0 row=0x48
-064000 NoOp ptr=0x6 rd=0 wr=1 row=0x00
-068080 NoOp ptr=0x6 rd=1 wr=0 row=0x02
-065440 NoOp ptr=0x6 rd=0 wr=1 row=0x51
-068000 NoOp ptr=0x6 rd=1 wr=0 row=0x00
-064240 NoOp ptr=0x6 rd=0 wr=1 row=0x09
-460000 PROG ptr=0x6 rd=0 wr=0 row=0x00
-069440 NoOp ptr=0x6 rd=1 wr=0 row=0x51
-068240 NoOp ptr=0x6 rd=1 wr=0 row=0x09
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-065480 NoOp ptr=0x6 rd=0 wr=1 row=0x52
-068000 NoOp ptr=0x6 rd=1 wr=0 row=0x00
-0651c0 NoOp ptr=0x6 rd=0 wr=1 row=0x47
-460000 PROG ptr=0x6 rd=0 wr=0 row=0x00
-0691c0 NoOp ptr=0x6 rd=1 wr=0 row=0x47
-069480 NoOp ptr=0x6 rd=1 wr=0 row=0x52
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-065200 NoOp ptr=0x6 rd=0 wr=1 row=0x48
-069200 NoOp ptr=0x6 rd=1 wr=0 row=0x48
-064000 NoOp ptr=0x6 rd=0 wr=1 row=0x00
-c60000 END ptr=0x6 rd=0 wr=0 row=0x00
-07c040 NoOp ptr=0x7 rd=1 wr=1 row=0x01
-078000 NoOp ptr=0x7 rd=1 wr=0 row=0x00
-075140 NoOp ptr=0x7 rd=0 wr=1 row=0x45
-078040 NoOp ptr=0x7 rd=1 wr=0 row=0x01
-074440 NoOp ptr=0x7 rd=0 wr=1 row=0x11
-470000 PROG ptr=0x7 rd=0 wr=0 row=0x00
-079140 NoOp ptr=0x7 rd=1 wr=0 row=0x45
-078440 NoOp ptr=0x7 rd=1 wr=0 row=0x11
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-0754c0 NoOp ptr=0x7 rd=0 wr=1 row=0x53
-078040 NoOp ptr=0x7 rd=1 wr=0 row=0x01
-075500 NoOp ptr=0x7 rd=0 wr=1 row=0x54
-470000 PROG ptr=0x7 rd=0 wr=0 row=0x00
-079500 NoOp ptr=0x7 rd=1 wr=0 row=0x54
-0794c0 NoOp ptr=0x7 rd=1 wr=0 row=0x53
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-075540 NoOp ptr=0x7 rd=0 wr=1 row=0x55
-079540 NoOp ptr=0x7 rd=1 wr=0 row=0x55
-074040 NoOp ptr=0x7 rd=0 wr=1 row=0x01
-078040 NoOp ptr=0x7 rd=1 wr=0 row=0x01
-075240 NoOp ptr=0x7 rd=0 wr=1 row=0x49
-078040 NoOp ptr=0x7 rd=1 wr=0 row=0x01
-074540 NoOp ptr=0x7 rd=0 wr=1 row=0x15
-470000 PROG ptr=0x7 rd=0 wr=0 row=0x00
-079240 NoOp ptr=0x7 rd=1 wr=0 row=0x49
-078540 NoOp ptr=0x7 rd=1 wr=0 row=0x15
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-075580 NoOp ptr=0x7 rd=0 wr=1 row=0x56
-078040 NoOp ptr=0x7 rd=1 wr=0 row=0x01
-075500 NoOp ptr=0x7 rd=0 wr=1 row=0x54
-470000 PROG ptr=0x7 rd=0 wr=0 row=0x00
-079500 NoOp ptr=0x7 rd=1 wr=0 row=0x54
-079580 NoOp ptr=0x7 rd=1 wr=0 row=0x56
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-075540 NoOp ptr=0x7 rd=0 wr=1 row=0x55
-079540 NoOp ptr=0x7 rd=1 wr=0 row=0x55
-074040 NoOp ptr=0x7 rd=0 wr=1 row=0x01
-078080 NoOp ptr=0x7 rd=1 wr=0 row=0x02
-075440 NoOp ptr=0x7 rd=0 wr=1 row=0x51
-078040 NoOp ptr=0x7 rd=1 wr=0 row=0x01
-0745c0 NoOp ptr=0x7 rd=0 wr=1 row=0x17
-470000 PROG ptr=0x7 rd=0 wr=0 row=0x00
-079440 NoOp ptr=0x7 rd=1 wr=0 row=0x51
-0785c0 NoOp ptr=0x7 rd=1 wr=0 row=0x17
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-0755c0 NoOp ptr=0x7 rd=0 wr=1 row=0x57
-078040 NoOp ptr=0x7 rd=1 wr=0 row=0x01
-075500 NoOp ptr=0x7 rd=0 wr=1 row=0x54
-470000 PROG ptr=0x7 rd=0 wr=0 row=0x00
-079500 NoOp ptr=0x7 rd=1 wr=0 row=0x54
-0795c0 NoOp ptr=0x7 rd=1 wr=0 row=0x57
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-075540 NoOp ptr=0x7 rd=0 wr=1 row=0x55
-079540 NoOp ptr=0x7 rd=1 wr=0 row=0x55
-074040 NoOp ptr=0x7 rd=0 wr=1 row=0x01
-c70000 END ptr=0x7 rd=0 wr=0 row=0x00
-00c080 NoOp ptr=0x0 rd=1 wr=1 row=0x02
-008000 NoOp ptr=0x0 rd=1 wr=0 row=0x00
-005140 NoOp ptr=0x0 rd=0 wr=1 row=0x45
-008080 NoOp ptr=0x0 rd=1 wr=0 row=0x02
-004640 NoOp ptr=0x0 rd=0 wr=1 row=0x19
-400000 PROG ptr=0x0 rd=0 wr=0 row=0x00
-009140 NoOp ptr=0x0 rd=1 wr=0 row=0x45
-008640 NoOp ptr=0x0 rd=1 wr=0 row=0x19
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-005600 NoOp ptr=0x0 rd=0 wr=1 row=0x58
-008080 NoOp ptr=0x0 rd=1 wr=0 row=0x02
-005640 NoOp ptr=0x0 rd=0 wr=1 row=0x59
-400000 PROG ptr=0x0 rd=0 wr=0 row=0x00
-009640 NoOp ptr=0x0 rd=1 wr=0 row=0x59
-009600 NoOp ptr=0x0 rd=1 wr=0 row=0x58
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-005800 NoOp ptr=0x0 rd=0 wr=1 row=0x60
-009800 NoOp ptr=0x0 rd=1 wr=0 row=0x60
-004080 NoOp ptr=0x0 rd=0 wr=1 row=0x02
-008040 NoOp ptr=0x0 rd=1 wr=0 row=0x01
-005240 NoOp ptr=0x0 rd=0 wr=1 row=0x49
-008080 NoOp ptr=0x0 rd=1 wr=0 row=0x02
-0048c0 NoOp ptr=0x0 rd=0 wr=1 row=0x23
-400000 PROG ptr=0x0 rd=0 wr=0 row=0x00
-009240 NoOp ptr=0x0 rd=1 wr=0 row=0x49
-0088c0 NoOp ptr=0x0 rd=1 wr=0 row=0x23
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-005840 NoOp ptr=0x0 rd=0 wr=1 row=0x61
-008080 NoOp ptr=0x0 rd=1 wr=0 row=0x02
-005640 NoOp ptr=0x0 rd=0 wr=1 row=0x59
-400000 PROG ptr=0x0 rd=0 wr=0 row=0x00
-009640 NoOp ptr=0x0 rd=1 wr=0 row=0x59
-009840 NoOp ptr=0x0 rd=1 wr=0 row=0x61
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-005800 NoOp ptr=0x0 rd=0 wr=1 row=0x60
-009800 NoOp ptr=0x0 rd=1 wr=0 row=0x60
-004080 NoOp ptr=0x0 rd=0 wr=1 row=0x02
-008080 NoOp ptr=0x0 rd=1 wr=0 row=0x02
-005440 NoOp ptr=0x0 rd=0 wr=1 row=0x51
-008080 NoOp ptr=0x0 rd=1 wr=0 row=0x02
-004940 NoOp ptr=0x0 rd=0 wr=1 row=0x25
-400000 PROG ptr=0x0 rd=0 wr=0 row=0x00
-009440 NoOp ptr=0x0 rd=1 wr=0 row=0x51
-008940 NoOp ptr=0x0 rd=1 wr=0 row=0x25
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-005880 NoOp ptr=0x0 rd=0 wr=1 row=0x62
-008080 NoOp ptr=0x0 rd=1 wr=0 row=0x02
-005640 NoOp ptr=0x0 rd=0 wr=1 row=0x59
-400000 PROG ptr=0x0 rd=0 wr=0 row=0x00
-009640 NoOp ptr=0x0 rd=1 wr=0 row=0x59
-009880 NoOp ptr=0x0 rd=1 wr=0 row=0x62
-800000 EXE ptr=0x0 rd=0 wr=0 row=0x00
-005800 NoOp ptr=0x0 rd=0 wr=1 row=0x60
-009800 NoOp ptr=0x0 rd=1 wr=0 row=0x60
-004080 NoOp ptr=0x0 rd=0 wr=1 row=0x02
-c00000 END ptr=0x0 rd=0 wr=0 row=0x00
+124e2005 MOVE core=0 row=20000 flags=0x18
+01000001 LOAD core=0 row=0 flags=0x1
+02ea6002 STORE core=0 row=60000 flags=0x2
+01271001 LOAD core=0 row=10000 flags=0x1
+02ea6102 STORE core=0 row=60001 flags=0x2
+01000003 PROGRAM_LUT core=0 row=0 flags=0x1
+01ea6001 LOAD core=0 row=60000 flags=0x1
+01ea6101 LOAD core=0 row=60001 flags=0x1
+00000004 COMPUTE core=0 row=0 flags=0x0
+02ea6202 STORE core=0 row=60002 flags=0x2
+014e2001 LOAD core=0 row=20000 flags=0x1
+02ea6302 STORE core=0 row=60003 flags=0x2
+00000003 PROGRAM_LUT core=0 row=0 flags=0x0
+01ea6301 LOAD core=0 row=60003 flags=0x1
+01ea6201 LOAD core=0 row=60002 flags=0x1
+00000004 COMPUTE core=0 row=0 flags=0x0
+02ea6402 STORE core=0 row=60004 flags=0x2
+01ea6401 LOAD core=0 row=60004 flags=0x1
+024e2002 STORE core=0 row=20000 flags=0x2
+01000101 LOAD core=0 row=1 flags=0x1
+02ea6502 STORE core=0 row=60005 flags=0x2
+01277401 LOAD core=0 row=10100 flags=0x1
+02ea6602 STORE core=0 row=60006 flags=0x2
+01000003 PROGRAM_LUT core=0 row=0 flags=0x1
+01ea6501 LOAD core=0 row=60005 flags=0x1
+01ea6601 LOAD core=0 row=60006 flags=0x1
+00000004 COMPUTE core=0 row=0 flags=0x0
+02ea6702 STORE core=0 row=60007 flags=0x2
+014e2001 LOAD core=0 row=20000 flags=0x1
+02ea6302 STORE core=0 row=60003 flags=0x2
+00000003 PROGRAM_LUT core=0 row=0 flags=0x0
+01ea6301 LOAD core=0 row=60003 flags=0x1
+01ea6701 LOAD core=0 row=60007 flags=0x1
+00000004 COMPUTE core=0 row=0 flags=0x0
+02ea6402 STORE core=0 row=60004 flags=0x2
+01ea6401 LOAD core=0 row=60004 flags=0x1
+024e2002 STORE core=0 row=20000 flags=0x2
+01000201 LOAD core=0 row=2 flags=0x1
+02ea6802 STORE core=0 row=60008 flags=0x2
+0127d801 LOAD core=0 row=10200 flags=0x1
+02ea6902 STORE core=0 row=60009 flags=0x2
+01000003 PROGRAM_LUT core=0 row=0 flags=0x1
+01ea6801 LOAD core=0 row=60008 flags=0x1
+01ea6901 LOAD core=0 row=60009 flags=0x1
+00000004 COMPUTE core=0 row=0 flags=0x0
+02ea6a02 STORE core=0 row=60010 flags=0x2
+014e2001 LOAD core=0 row=20000 flags=0x1
+02ea6302 STORE core=0 row=60003 flags=0x2
+00000003 PROGRAM_LUT core=0 row=0 flags=0x0
+01ea6301 LOAD core=0 row=60003 flags=0x1
+01ea6a01 LOAD core=0 row=60010 flags=0x1
+00000004 COMPUTE core=0 row=0 flags=0x0
+02ea6402 STORE core=0 row=60004 flags=0x2
+01ea6401 LOAD core=0 row=60004 flags=0x1
+024e2002 STORE core=0 row=20000 flags=0x2
+0000000f SYNC core=0 row=0 flags=0x0
+124e2115 MOVE core=1 row=20001 flags=0x18
+01000011 LOAD core=1 row=0 flags=0x1
+02ea6012 STORE core=1 row=60000 flags=0x2
+01271111 LOAD core=1 row=10001 flags=0x1
+02ea6b12 STORE core=1 row=60011 flags=0x2
+01000013 PROGRAM_LUT core=1 row=0 flags=0x1
+01ea6011 LOAD core=1 row=60000 flags=0x1
+01ea6b11 LOAD core=1 row=60011 flags=0x1
+00000014 COMPUTE core=1 row=0 flags=0x0
+02ea6c12 STORE core=1 row=60012 flags=0x2
+014e2111 LOAD core=1 row=20001 flags=0x1
+02ea6d12 STORE core=1 row=60013 flags=0x2
+00000013 PROGRAM_LUT core=1 row=0 flags=0x0
+01ea6d11 LOAD core=1 row=60013 flags=0x1
+01ea6c11 LOAD core=1 row=60012 flags=0x1
+00000014 COMPUTE core=1 row=0 flags=0x0
+02ea6e12 STORE core=1 row=60014 flags=0x2
+01ea6e11 LOAD core=1 row=60014 flags=0x1
+024e2112 STORE core=1 row=20001 flags=0x2
+01000111 LOAD core=1 row=1 flags=0x1
+02ea6512 STORE core=1 row=60005 flags=0x2
+01277511 LOAD core=1 row=10101 flags=0x1
+02ea6f12 STORE core=1 row=60015 flags=0x2
+01000013 PROGRAM_LUT core=1 row=0 flags=0x1
+01ea6511 LOAD core=1 row=60005 flags=0x1
+01ea6f11 LOAD core=1 row=60015 flags=0x1
+00000014 COMPUTE core=1 row=0 flags=0x0
+02ea7012 STORE core=1 row=60016 flags=0x2
+014e2111 LOAD core=1 row=20001 flags=0x1
+02ea6d12 STORE core=1 row=60013 flags=0x2
+00000013 PROGRAM_LUT core=1 row=0 flags=0x0
+01ea6d11 LOAD core=1 row=60013 flags=0x1
+01ea7011 LOAD core=1 row=60016 flags=0x1
+00000014 COMPUTE core=1 row=0 flags=0x0
+02ea6e12 STORE core=1 row=60014 flags=0x2
+01ea6e11 LOAD core=1 row=60014 flags=0x1
+024e2112 STORE core=1 row=20001 flags=0x2
+01000211 LOAD core=1 row=2 flags=0x1
+02ea6812 STORE core=1 row=60008 flags=0x2
+0127d911 LOAD core=1 row=10201 flags=0x1
+02ea7112 STORE core=1 row=60017 flags=0x2
+01000013 PROGRAM_LUT core=1 row=0 flags=0x1
+01ea6811 LOAD core=1 row=60008 flags=0x1
+01ea7111 LOAD core=1 row=60017 flags=0x1
+00000014 COMPUTE core=1 row=0 flags=0x0
+02ea7212 STORE core=1 row=60018 flags=0x2
+014e2111 LOAD core=1 row=20001 flags=0x1
+02ea6d12 STORE core=1 row=60013 flags=0x2
+00000013 PROGRAM_LUT core=1 row=0 flags=0x0
+01ea6d11 LOAD core=1 row=60013 flags=0x1
+01ea7211 LOAD core=1 row=60018 flags=0x1
+00000014 COMPUTE core=1 row=0 flags=0x0
+02ea6e12 STORE core=1 row=60014 flags=0x2
+01ea6e11 LOAD core=1 row=60014 flags=0x1
+024e2112 STORE core=1 row=20001 flags=0x2
+0000001f SYNC core=1 row=0 flags=0x0
+124e2225 MOVE core=2 row=20002 flags=0x18
+01000021 LOAD core=2 row=0 flags=0x1
+02ea6022 STORE core=2 row=60000 flags=0x2
+01271221 LOAD core=2 row=10002 flags=0x1
+02ea7322 STORE core=2 row=60019 flags=0x2
+01000023 PROGRAM_LUT core=2 row=0 flags=0x1
+01ea6021 LOAD core=2 row=60000 flags=0x1
+01ea7321 LOAD core=2 row=60019 flags=0x1
+00000024 COMPUTE core=2 row=0 flags=0x0
+02ea7422 STORE core=2 row=60020 flags=0x2
+014e2221 LOAD core=2 row=20002 flags=0x1
+02ea7522 STORE core=2 row=60021 flags=0x2
+00000023 PROGRAM_LUT core=2 row=0 flags=0x0
+01ea7521 LOAD core=2 row=60021 flags=0x1
+01ea7421 LOAD core=2 row=60020 flags=0x1
+00000024 COMPUTE core=2 row=0 flags=0x0
+02ea7622 STORE core=2 row=60022 flags=0x2
+01ea7621 LOAD core=2 row=60022 flags=0x1
+024e2222 STORE core=2 row=20002 flags=0x2
+01000121 LOAD core=2 row=1 flags=0x1
+02ea6522 STORE core=2 row=60005 flags=0x2
+01277621 LOAD core=2 row=10102 flags=0x1
+02ea7722 STORE core=2 row=60023 flags=0x2
+01000023 PROGRAM_LUT core=2 row=0 flags=0x1
+01ea6521 LOAD core=2 row=60005 flags=0x1
+01ea7721 LOAD core=2 row=60023 flags=0x1
+00000024 COMPUTE core=2 row=0 flags=0x0
+02ea7822 STORE core=2 row=60024 flags=0x2
+014e2221 LOAD core=2 row=20002 flags=0x1
+02ea7522 STORE core=2 row=60021 flags=0x2
+00000023 PROGRAM_LUT core=2 row=0 flags=0x0
+01ea7521 LOAD core=2 row=60021 flags=0x1
+01ea7821 LOAD core=2 row=60024 flags=0x1
+00000024 COMPUTE core=2 row=0 flags=0x0
+02ea7622 STORE core=2 row=60022 flags=0x2
+01ea7621 LOAD core=2 row=60022 flags=0x1
+024e2222 STORE core=2 row=20002 flags=0x2
+01000221 LOAD core=2 row=2 flags=0x1
+02ea6822 STORE core=2 row=60008 flags=0x2
+0127da21 LOAD core=2 row=10202 flags=0x1
+02ea7922 STORE core=2 row=60025 flags=0x2
+01000023 PROGRAM_LUT core=2 row=0 flags=0x1
+01ea6821 LOAD core=2 row=60008 flags=0x1
+01ea7921 LOAD core=2 row=60025 flags=0x1
+00000024 COMPUTE core=2 row=0 flags=0x0
+02ea7a22 STORE core=2 row=60026 flags=0x2
+014e2221 LOAD core=2 row=20002 flags=0x1
+02ea7522 STORE core=2 row=60021 flags=0x2
+00000023 PROGRAM_LUT core=2 row=0 flags=0x0
+01ea7521 LOAD core=2 row=60021 flags=0x1
+01ea7a21 LOAD core=2 row=60026 flags=0x1
+00000024 COMPUTE core=2 row=0 flags=0x0
+02ea7622 STORE core=2 row=60022 flags=0x2
+01ea7621 LOAD core=2 row=60022 flags=0x1
+024e2222 STORE core=2 row=20002 flags=0x2
+0000002f SYNC core=2 row=0 flags=0x0
+124e8435 MOVE core=3 row=20100 flags=0x18
+01006431 LOAD core=3 row=100 flags=0x1
+02ea7b32 STORE core=3 row=60027 flags=0x2
+01271031 LOAD core=3 row=10000 flags=0x1
+02ea6132 STORE core=3 row=60001 flags=0x2
+01000033 PROGRAM_LUT core=3 row=0 flags=0x1
+01ea7b31 LOAD core=3 row=60027 flags=0x1
+01ea6131 LOAD core=3 row=60001 flags=0x1
+00000034 COMPUTE core=3 row=0 flags=0x0
+02ea7c32 STORE core=3 row=60028 flags=0x2
+014e8431 LOAD core=3 row=20100 flags=0x1
+02ea7d32 STORE core=3 row=60029 flags=0x2
+00000033 PROGRAM_LUT core=3 row=0 flags=0x0
+01ea7d31 LOAD core=3 row=60029 flags=0x1
+01ea7c31 LOAD core=3 row=60028 flags=0x1
+00000034 COMPUTE core=3 row=0 flags=0x0
+02ea7e32 STORE core=3 row=60030 flags=0x2
+01ea7e31 LOAD core=3 row=60030 flags=0x1
+024e8432 STORE core=3 row=20100 flags=0x2
+01006531 LOAD core=3 row=101 flags=0x1
+02ea7f32 STORE core=3 row=60031 flags=0x2
+01277431 LOAD core=3 row=10100 flags=0x1
+02ea6632 STORE core=3 row=60006 flags=0x2
+01000033 PROGRAM_LUT core=3 row=0 flags=0x1
+01ea7f31 LOAD core=3 row=60031 flags=0x1
+01ea6631 LOAD core=3 row=60006 flags=0x1
+00000034 COMPUTE core=3 row=0 flags=0x0
+02ea8032 STORE core=3 row=60032 flags=0x2
+014e8431 LOAD core=3 row=20100 flags=0x1
+02ea7d32 STORE core=3 row=60029 flags=0x2
+00000033 PROGRAM_LUT core=3 row=0 flags=0x0
+01ea7d31 LOAD core=3 row=60029 flags=0x1
+01ea8031 LOAD core=3 row=60032 flags=0x1
+00000034 COMPUTE core=3 row=0 flags=0x0
+02ea7e32 STORE core=3 row=60030 flags=0x2
+01ea7e31 LOAD core=3 row=60030 flags=0x1
+024e8432 STORE core=3 row=20100 flags=0x2
+01006631 LOAD core=3 row=102 flags=0x1
+02ea8132 STORE core=3 row=60033 flags=0x2
+0127d831 LOAD core=3 row=10200 flags=0x1
+02ea6932 STORE core=3 row=60009 flags=0x2
+01000033 PROGRAM_LUT core=3 row=0 flags=0x1
+01ea8131 LOAD core=3 row=60033 flags=0x1
+01ea6931 LOAD core=3 row=60009 flags=0x1
+00000034 COMPUTE core=3 row=0 flags=0x0
+02ea8232 STORE core=3 row=60034 flags=0x2
+014e8431 LOAD core=3 row=20100 flags=0x1
+02ea7d32 STORE core=3 row=60029 flags=0x2
+00000033 PROGRAM_LUT core=3 row=0 flags=0x0
+01ea7d31 LOAD core=3 row=60029 flags=0x1
+01ea8231 LOAD core=3 row=60034 flags=0x1
+00000034 COMPUTE core=3 row=0 flags=0x0
+02ea7e32 STORE core=3 row=60030 flags=0x2
+01ea7e31 LOAD core=3 row=60030 flags=0x1
+024e8432 STORE core=3 row=20100 flags=0x2
+0000003f SYNC core=3 row=0 flags=0x0
+124e8545 MOVE core=4 row=20101 flags=0x18
+01006441 LOAD core=4 row=100 flags=0x1
+02ea7b42 STORE core=4 row=60027 flags=0x2
+01271141 LOAD core=4 row=10001 flags=0x1
+02ea6b42 STORE core=4 row=60011 flags=0x2
+01000043 PROGRAM_LUT core=4 row=0 flags=0x1
+01ea7b41 LOAD core=4 row=60027 flags=0x1
+01ea6b41 LOAD core=4 row=60011 flags=0x1
+00000044 COMPUTE core=4 row=0 flags=0x0
+02ea8342 STORE core=4 row=60035 flags=0x2
+014e8541 LOAD core=4 row=20101 flags=0x1
+02ea8442 STORE core=4 row=60036 flags=0x2
+00000043 PROGRAM_LUT core=4 row=0 flags=0x0
+01ea8441 LOAD core=4 row=60036 flags=0x1
+01ea8341 LOAD core=4 row=60035 flags=0x1
+00000044 COMPUTE core=4 row=0 flags=0x0
+02ea8542 STORE core=4 row=60037 flags=0x2
+01ea8541 LOAD core=4 row=60037 flags=0x1
+024e8542 STORE core=4 row=20101 flags=0x2
+01006541 LOAD core=4 row=101 flags=0x1
+02ea7f42 STORE core=4 row=60031 flags=0x2
+01277541 LOAD core=4 row=10101 flags=0x1
+02ea6f42 STORE core=4 row=60015 flags=0x2
+01000043 PROGRAM_LUT core=4 row=0 flags=0x1
+01ea7f41 LOAD core=4 row=60031 flags=0x1
+01ea6f41 LOAD core=4 row=60015 flags=0x1
+00000044 COMPUTE core=4 row=0 flags=0x0
+02ea8642 STORE core=4 row=60038 flags=0x2
+014e8541 LOAD core=4 row=20101 flags=0x1
+02ea8442 STORE core=4 row=60036 flags=0x2
+00000043 PROGRAM_LUT core=4 row=0 flags=0x0
+01ea8441 LOAD core=4 row=60036 flags=0x1
+01ea8641 LOAD core=4 row=60038 flags=0x1
+00000044 COMPUTE core=4 row=0 flags=0x0
+02ea8542 STORE core=4 row=60037 flags=0x2
+01ea8541 LOAD core=4 row=60037 flags=0x1
+024e8542 STORE core=4 row=20101 flags=0x2
+01006641 LOAD core=4 row=102 flags=0x1
+02ea8142 STORE core=4 row=60033 flags=0x2
+0127d941 LOAD core=4 row=10201 flags=0x1
+02ea7142 STORE core=4 row=60017 flags=0x2
+01000043 PROGRAM_LUT core=4 row=0 flags=0x1
+01ea8141 LOAD core=4 row=60033 flags=0x1
+01ea7141 LOAD core=4 row=60017 flags=0x1
+00000044 COMPUTE core=4 row=0 flags=0x0
+02ea8742 STORE core=4 row=60039 flags=0x2
+014e8541 LOAD core=4 row=20101 flags=0x1
+02ea8442 STORE core=4 row=60036 flags=0x2
+00000043 PROGRAM_LUT core=4 row=0 flags=0x0
+01ea8441 LOAD core=4 row=60036 flags=0x1
+01ea8741 LOAD core=4 row=60039 flags=0x1
+00000044 COMPUTE core=4 row=0 flags=0x0
+02ea8542 STORE core=4 row=60037 flags=0x2
+01ea8541 LOAD core=4 row=60037 flags=0x1
+024e8542 STORE core=4 row=20101 flags=0x2
+0000004f SYNC core=4 row=0 flags=0x0
+124e8655 MOVE core=5 row=20102 flags=0x18
+01006451 LOAD core=5 row=100 flags=0x1
+02ea7b52 STORE core=5 row=60027 flags=0x2
+01271251 LOAD core=5 row=10002 flags=0x1
+02ea7352 STORE core=5 row=60019 flags=0x2
+01000053 PROGRAM_LUT core=5 row=0 flags=0x1
+01ea7b51 LOAD core=5 row=60027 flags=0x1
+01ea7351 LOAD core=5 row=60019 flags=0x1
+00000054 COMPUTE core=5 row=0 flags=0x0
+02ea8852 STORE core=5 row=60040 flags=0x2
+014e8651 LOAD core=5 row=20102 flags=0x1
+02ea8952 STORE core=5 row=60041 flags=0x2
+00000053 PROGRAM_LUT core=5 row=0 flags=0x0
+01ea8951 LOAD core=5 row=60041 flags=0x1
+01ea8851 LOAD core=5 row=60040 flags=0x1
+00000054 COMPUTE core=5 row=0 flags=0x0
+02ea8a52 STORE core=5 row=60042 flags=0x2
+01ea8a51 LOAD core=5 row=60042 flags=0x1
+024e8652 STORE core=5 row=20102 flags=0x2
+01006551 LOAD core=5 row=101 flags=0x1
+02ea7f52 STORE core=5 row=60031 flags=0x2
+01277651 LOAD core=5 row=10102 flags=0x1
+02ea7752 STORE core=5 row=60023 flags=0x2
+01000053 PROGRAM_LUT core=5 row=0 flags=0x1
+01ea7f51 LOAD core=5 row=60031 flags=0x1
+01ea7751 LOAD core=5 row=60023 flags=0x1
+00000054 COMPUTE core=5 row=0 flags=0x0
+02ea8b52 STORE core=5 row=60043 flags=0x2
+014e8651 LOAD core=5 row=20102 flags=0x1
+02ea8952 STORE core=5 row=60041 flags=0x2
+00000053 PROGRAM_LUT core=5 row=0 flags=0x0
+01ea8951 LOAD core=5 row=60041 flags=0x1
+01ea8b51 LOAD core=5 row=60043 flags=0x1
+00000054 COMPUTE core=5 row=0 flags=0x0
+02ea8a52 STORE core=5 row=60042 flags=0x2
+01ea8a51 LOAD core=5 row=60042 flags=0x1
+024e8652 STORE core=5 row=20102 flags=0x2
+01006651 LOAD core=5 row=102 flags=0x1
+02ea8152 STORE core=5 row=60033 flags=0x2
+0127da51 LOAD core=5 row=10202 flags=0x1
+02ea7952 STORE core=5 row=60025 flags=0x2
+01000053 PROGRAM_LUT core=5 row=0 flags=0x1
+01ea8151 LOAD core=5 row=60033 flags=0x1
+01ea7951 LOAD core=5 row=60025 flags=0x1
+00000054 COMPUTE core=5 row=0 flags=0x0
+02ea8c52 STORE core=5 row=60044 flags=0x2
+014e8651 LOAD core=5 row=20102 flags=0x1
+02ea8952 STORE core=5 row=60041 flags=0x2
+00000053 PROGRAM_LUT core=5 row=0 flags=0x0
+01ea8951 LOAD core=5 row=60041 flags=0x1
+01ea8c51 LOAD core=5 row=60044 flags=0x1
+00000054 COMPUTE core=5 row=0 flags=0x0
+02ea8a52 STORE core=5 row=60042 flags=0x2
+01ea8a51 LOAD core=5 row=60042 flags=0x1
+024e8652 STORE core=5 row=20102 flags=0x2
+0000005f SYNC core=5 row=0 flags=0x0
+124ee865 MOVE core=6 row=20200 flags=0x18
+0100c861 LOAD core=6 row=200 flags=0x1
+02ea8d62 STORE core=6 row=60045 flags=0x2
+01271061 LOAD core=6 row=10000 flags=0x1
+02ea6162 STORE core=6 row=60001 flags=0x2
+01000063 PROGRAM_LUT core=6 row=0 flags=0x1
+01ea8d61 LOAD core=6 row=60045 flags=0x1
+01ea6161 LOAD core=6 row=60001 flags=0x1
+00000064 COMPUTE core=6 row=0 flags=0x0
+02ea8e62 STORE core=6 row=60046 flags=0x2
+014ee861 LOAD core=6 row=20200 flags=0x1
+02ea8f62 STORE core=6 row=60047 flags=0x2
+00000063 PROGRAM_LUT core=6 row=0 flags=0x0
+01ea8f61 LOAD core=6 row=60047 flags=0x1
+01ea8e61 LOAD core=6 row=60046 flags=0x1
+00000064 COMPUTE core=6 row=0 flags=0x0
+02ea9062 STORE core=6 row=60048 flags=0x2
+01ea9061 LOAD core=6 row=60048 flags=0x1
+024ee862 STORE core=6 row=20200 flags=0x2
+0100c961 LOAD core=6 row=201 flags=0x1
+02ea9162 STORE core=6 row=60049 flags=0x2
+01277461 LOAD core=6 row=10100 flags=0x1
+02ea6662 STORE core=6 row=60006 flags=0x2
+01000063 PROGRAM_LUT core=6 row=0 flags=0x1
+01ea9161 LOAD core=6 row=60049 flags=0x1
+01ea6661 LOAD core=6 row=60006 flags=0x1
+00000064 COMPUTE core=6 row=0 flags=0x0
+02ea9262 STORE core=6 row=60050 flags=0x2
+014ee861 LOAD core=6 row=20200 flags=0x1
+02ea8f62 STORE core=6 row=60047 flags=0x2
+00000063 PROGRAM_LUT core=6 row=0 flags=0x0
+01ea8f61 LOAD core=6 row=60047 flags=0x1
+01ea9261 LOAD core=6 row=60050 flags=0x1
+00000064 COMPUTE core=6 row=0 flags=0x0
+02ea9062 STORE core=6 row=60048 flags=0x2
+01ea9061 LOAD core=6 row=60048 flags=0x1
+024ee862 STORE core=6 row=20200 flags=0x2
+0100ca61 LOAD core=6 row=202 flags=0x1
+02ea9362 STORE core=6 row=60051 flags=0x2
+0127d861 LOAD core=6 row=10200 flags=0x1
+02ea6962 STORE core=6 row=60009 flags=0x2
+01000063 PROGRAM_LUT core=6 row=0 flags=0x1
+01ea9361 LOAD core=6 row=60051 flags=0x1
+01ea6961 LOAD core=6 row=60009 flags=0x1
+00000064 COMPUTE core=6 row=0 flags=0x0
+02ea9462 STORE core=6 row=60052 flags=0x2
+014ee861 LOAD core=6 row=20200 flags=0x1
+02ea8f62 STORE core=6 row=60047 flags=0x2
+00000063 PROGRAM_LUT core=6 row=0 flags=0x0
+01ea8f61 LOAD core=6 row=60047 flags=0x1
+01ea9461 LOAD core=6 row=60052 flags=0x1
+00000064 COMPUTE core=6 row=0 flags=0x0
+02ea9062 STORE core=6 row=60048 flags=0x2
+01ea9061 LOAD core=6 row=60048 flags=0x1
+024ee862 STORE core=6 row=20200 flags=0x2
+0000006f SYNC core=6 row=0 flags=0x0
+124ee975 MOVE core=7 row=20201 flags=0x18
+0100c871 LOAD core=7 row=200 flags=0x1
+02ea8d72 STORE core=7 row=60045 flags=0x2
+01271171 LOAD core=7 row=10001 flags=0x1
+02ea6b72 STORE core=7 row=60011 flags=0x2
+01000073 PROGRAM_LUT core=7 row=0 flags=0x1
+01ea8d71 LOAD core=7 row=60045 flags=0x1
+01ea6b71 LOAD core=7 row=60011 flags=0x1
+00000074 COMPUTE core=7 row=0 flags=0x0
+02ea9572 STORE core=7 row=60053 flags=0x2
+014ee971 LOAD core=7 row=20201 flags=0x1
+02ea9672 STORE core=7 row=60054 flags=0x2
+00000073 PROGRAM_LUT core=7 row=0 flags=0x0
+01ea9671 LOAD core=7 row=60054 flags=0x1
+01ea9571 LOAD core=7 row=60053 flags=0x1
+00000074 COMPUTE core=7 row=0 flags=0x0
+02ea9772 STORE core=7 row=60055 flags=0x2
+01ea9771 LOAD core=7 row=60055 flags=0x1
+024ee972 STORE core=7 row=20201 flags=0x2
+0100c971 LOAD core=7 row=201 flags=0x1
+02ea9172 STORE core=7 row=60049 flags=0x2
+01277571 LOAD core=7 row=10101 flags=0x1
+02ea6f72 STORE core=7 row=60015 flags=0x2
+01000073 PROGRAM_LUT core=7 row=0 flags=0x1
+01ea9171 LOAD core=7 row=60049 flags=0x1
+01ea6f71 LOAD core=7 row=60015 flags=0x1
+00000074 COMPUTE core=7 row=0 flags=0x0
+02ea9872 STORE core=7 row=60056 flags=0x2
+014ee971 LOAD core=7 row=20201 flags=0x1
+02ea9672 STORE core=7 row=60054 flags=0x2
+00000073 PROGRAM_LUT core=7 row=0 flags=0x0
+01ea9671 LOAD core=7 row=60054 flags=0x1
+01ea9871 LOAD core=7 row=60056 flags=0x1
+00000074 COMPUTE core=7 row=0 flags=0x0
+02ea9772 STORE core=7 row=60055 flags=0x2
+01ea9771 LOAD core=7 row=60055 flags=0x1
+024ee972 STORE core=7 row=20201 flags=0x2
+0100ca71 LOAD core=7 row=202 flags=0x1
+02ea9372 STORE core=7 row=60051 flags=0x2
+0127d971 LOAD core=7 row=10201 flags=0x1
+02ea7172 STORE core=7 row=60017 flags=0x2
+01000073 PROGRAM_LUT core=7 row=0 flags=0x1
+01ea9371 LOAD core=7 row=60051 flags=0x1
+01ea7171 LOAD core=7 row=60017 flags=0x1
+00000074 COMPUTE core=7 row=0 flags=0x0
+02ea9972 STORE core=7 row=60057 flags=0x2
+014ee971 LOAD core=7 row=20201 flags=0x1
+02ea9672 STORE core=7 row=60054 flags=0x2
+00000073 PROGRAM_LUT core=7 row=0 flags=0x0
+01ea9671 LOAD core=7 row=60054 flags=0x1
+01ea9971 LOAD core=7 row=60057 flags=0x1
+00000074 COMPUTE core=7 row=0 flags=0x0
+02ea9772 STORE core=7 row=60055 flags=0x2
+01ea9771 LOAD core=7 row=60055 flags=0x1
+024ee972 STORE core=7 row=20201 flags=0x2
+0000007f SYNC core=7 row=0 flags=0x0
+124eea05 MOVE core=0 row=20202 flags=0x18
+0100c801 LOAD core=0 row=200 flags=0x1
+02ea8d02 STORE core=0 row=60045 flags=0x2
+01271201 LOAD core=0 row=10002 flags=0x1
+02ea7302 STORE core=0 row=60019 flags=0x2
+01000003 PROGRAM_LUT core=0 row=0 flags=0x1
+01ea8d01 LOAD core=0 row=60045 flags=0x1
+01ea7301 LOAD core=0 row=60019 flags=0x1
+00000004 COMPUTE core=0 row=0 flags=0x0
+02ea9a02 STORE core=0 row=60058 flags=0x2
+014eea01 LOAD core=0 row=20202 flags=0x1
+02ea9b02 STORE core=0 row=60059 flags=0x2
+00000003 PROGRAM_LUT core=0 row=0 flags=0x0
+01ea9b01 LOAD core=0 row=60059 flags=0x1
+01ea9a01 LOAD core=0 row=60058 flags=0x1
+00000004 COMPUTE core=0 row=0 flags=0x0
+02ea9c02 STORE core=0 row=60060 flags=0x2
+01ea9c01 LOAD core=0 row=60060 flags=0x1
+024eea02 STORE core=0 row=20202 flags=0x2
+0100c901 LOAD core=0 row=201 flags=0x1
+02ea9102 STORE core=0 row=60049 flags=0x2
+01277601 LOAD core=0 row=10102 flags=0x1
+02ea7702 STORE core=0 row=60023 flags=0x2
+01000003 PROGRAM_LUT core=0 row=0 flags=0x1
+01ea9101 LOAD core=0 row=60049 flags=0x1
+01ea7701 LOAD core=0 row=60023 flags=0x1
+00000004 COMPUTE core=0 row=0 flags=0x0
+02ea9d02 STORE core=0 row=60061 flags=0x2
+014eea01 LOAD core=0 row=20202 flags=0x1
+02ea9b02 STORE core=0 row=60059 flags=0x2
+00000003 PROGRAM_LUT core=0 row=0 flags=0x0
+01ea9b01 LOAD core=0 row=60059 flags=0x1
+01ea9d01 LOAD core=0 row=60061 flags=0x1
+00000004 COMPUTE core=0 row=0 flags=0x0
+02ea9c02 STORE core=0 row=60060 flags=0x2
+01ea9c01 LOAD core=0 row=60060 flags=0x1
+024eea02 STORE core=0 row=20202 flags=0x2
+0100ca01 LOAD core=0 row=202 flags=0x1
+02ea9302 STORE core=0 row=60051 flags=0x2
+0127da01 LOAD core=0 row=10202 flags=0x1
+02ea7902 STORE core=0 row=60025 flags=0x2
+01000003 PROGRAM_LUT core=0 row=0 flags=0x1
+01ea9301 LOAD core=0 row=60051 flags=0x1
+01ea7901 LOAD core=0 row=60025 flags=0x1
+00000004 COMPUTE core=0 row=0 flags=0x0
+02ea9e02 STORE core=0 row=60062 flags=0x2
+014eea01 LOAD core=0 row=20202 flags=0x1
+02ea9b02 STORE core=0 row=60059 flags=0x2
+00000003 PROGRAM_LUT core=0 row=0 flags=0x0
+01ea9b01 LOAD core=0 row=60059 flags=0x1
+01ea9e01 LOAD core=0 row=60062 flags=0x1
+00000004 COMPUTE core=0 row=0 flags=0x0
+02ea9c02 STORE core=0 row=60060 flags=0x2
+01ea9c01 LOAD core=0 row=60060 flags=0x1
+024eea02 STORE core=0 row=20202 flags=0x2
+0000000f SYNC core=0 row=0 flags=0x0
