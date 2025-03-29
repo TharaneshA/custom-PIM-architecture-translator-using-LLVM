@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.13.4)
 project(matrix_compiler)
 
+# Specify build tool
+if(NOT CMAKE_MAKE_PROGRAM)
+    find_program(CMAKE_MAKE_PROGRAM NAMES ninja ninja-build)
+    if(NOT CMAKE_MAKE_PROGRAM)
+        message(FATAL_ERROR "Ninja build tool not found. Please install Ninja.")
+    endif()
+endif()
+
 # Find LLVM package
 find_package(LLVM REQUIRED CONFIG)
 
