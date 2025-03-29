@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-#include "parser.h"
+#include "ir_parser.h"
 
 struct AnalyzedLoop {
     std::string loopHeader;

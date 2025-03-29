@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-#include "memory_mapper.h"
+#include "pim_memory_mapper.h"
 
 std::vector<std::string> generateInstructions(const MappedMemory &mappedMemory);
 

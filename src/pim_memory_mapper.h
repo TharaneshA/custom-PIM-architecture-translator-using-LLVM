@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-#include "loop_analyzer.h"
+#include "parallel_loop_analyzer.h"
 
 struct MappedMemory {
     std::vector<std::string> memoryAccesses;

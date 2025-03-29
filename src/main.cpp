@@ -12,7 +12,7 @@ static cl::opt<std::string> InputFilename(cl::Positional, cl::desc("<input .ll f
 static cl::opt<std::string> OutputFilename(cl::Positional, cl::desc("<output .isa file>"), cl::Required);
 
 int main(int argc, char **argv) {
-    cl::ParseCommandLineOptions(argc, argv, "PIM Compiler");
+    cl::ParseCommandLineOptions(argc, argv, "PIM Translator");
     
     // Parse LLVM IR
     auto parsedCode = parseLLVMIR(InputFilename);
