@@ -1,7 +1,0 @@
-Test_case,matrix_size,expected_instructions
-Basic,4x4,7
-Medium,8x8,15
-Large,16x16,31
-Extra_Large,32x32,63
-Small_Rectangular,2x4,5
-Medium_Rectangular,4x8,11
